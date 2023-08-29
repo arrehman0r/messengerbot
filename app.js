@@ -83,14 +83,16 @@ app.post("/webhook", (req, res) => {
 
 // Handles messages events
 function handleMessage(senderPsid, receivedMessage) {
+  const senderName = receivedMessage.sender.name;
   let response;
 
   // Checks if the message contains text
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
+
     response = {
-      text: `Hi ${userName}! hope you are doing fine, how can I help you today sir!`,
+      text: `Hi ${senderName}! hope you are doing fine, how can I help you today sir!`,
     };
   } else if (receivedMessage.attachments) {
     // Get the URL of the message attachment
