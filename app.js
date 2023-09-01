@@ -1,8 +1,5 @@
 "use strict";
-
-// Use dotenv to read .env vars into Node
 require("dotenv").config();
-
 // Imports dependencies and set up http server
 const { customerAdress } = require("./scripts/customerAddress");
 const request = require("request"),
@@ -23,6 +20,9 @@ app.use(cors());
 
 app.get("/", function (_req, res) {
   res.send("Hello from bot once again");
+});
+app.get("/privacy-policy", function (_req, res) {
+  res.sendFile(__dirname + "/public/privacy_policy.html");
 });
 // Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
