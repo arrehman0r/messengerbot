@@ -24,8 +24,8 @@ app.get("/", function (_req, res) {
 app.get("/privacy-policy", function (_req, res) {
   res.sendFile(__dirname + "/public/privacy_policy.html");
 });
-app.get("/term-and-services", function (_req, res) {
-  res.sendFile(__dirname + "/public/privacy_policy.html");
+app.get("/terms-and-services", function (_req, res) {
+  res.sendFile(__dirname + "/public/terms.html");
 });
 // Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
