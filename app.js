@@ -24,6 +24,9 @@ app.get("/", function (_req, res) {
 app.get("/privacy-policy", function (_req, res) {
   res.sendFile(__dirname + "/public/privacy_policy.html");
 });
+app.get("/term-and-services", function (_req, res) {
+  res.sendFile(__dirname + "/public/privacy_policy.html");
+});
 // Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
   // Your verify token. Should be a random string.
