@@ -65,7 +65,12 @@ app.post("/webhook", (req, res) => {
       if (webhookEvent.message) {
         handleMessage(senderPsid, webhookEvent.message);
       } else if (webhookEvent.postback) {
-        handlePostback(senderPsid, webhookEvent.postback);
+        handlePostback(
+          senderPsid,
+          webhookEvent.postback,
+          PAGE_ACCESS_TOKEN,
+          PAGE_ID
+        );
       }
     });
 
@@ -127,7 +132,12 @@ function handleMessage(senderPsid, receivedMessage) {
 }
 
 // Handles messaging_postbacks events
-function handlePostback(senderPsid, receivedPostback) {
+function handlePostback(
+  senderPsid,
+  receivedPostback,
+  PAGE_ACCESS_TOKEN,
+  PAGE_ID
+) {
   let response;
 
   // Get the payload for the postback
