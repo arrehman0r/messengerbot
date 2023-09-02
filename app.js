@@ -18,9 +18,11 @@ app.use(json());
 // Enable CORS for all routes
 app.use(cors());
 
-app.get("/", function (_req, res) {
-  res.send("Hello from bot once again");
-});
+// app.get("/", function (_req, res) {
+//   res.send("Hello from bot once again");
+// });
+const routes = require("./routes/routes");
+app.use("/", routes);
 app.get("/privacy-policy", function (_req, res) {
   res.sendFile(__dirname + "/public/privacy_policy.html");
 });
