@@ -34,7 +34,10 @@ function customerAddress(senderPsid) {
   request(
     {
       uri: "https://graph.facebook.com/v2.6/me/messages",
-      qs: { access_token: PAGE_ACCESS_TOKEN },
+      qs: {
+        access_token:
+          EAAK9BxkvgA8BO8shC59uAvsd2ytzQKZCSZBOUXFYVmPEjscOgF35EaqGDbPHMe8q7p4bbuonDuIM6DZAm6n0bhnfJgoKoJ3dZCM1NoZCCN1jayAKY98ZBd3aZCBt87ckeVTxr6Td7xZCk0GNXLL9f6ute2Y1Qf3gGKgeKXbeZCYbQJ2PGkM2wQTJMYOjjgV0S2HhmDnq92Rqn4vmFmr3z,
+      },
       method: "POST",
       json: messageData,
     },
