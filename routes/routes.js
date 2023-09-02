@@ -5,7 +5,7 @@ router.get("/", function (_req, res) {
   res.send("Hello from bot once again yes!!");
 });
 router.get("/privacy-policy", function (_req, res) {
-  res.sendFile(__dirname + "./../pulic/privacy_policy/html");
+  res.sendFile(__dirname + "./../pulic/privacy_policy.html");
 });
 router.get("/terms-and-services", function (_req, res) {
   res.sendFile(__dirname + "./../public/terms.html");
