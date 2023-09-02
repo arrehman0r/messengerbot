@@ -20,5 +20,10 @@ router.get("/terms-and-services", function (_req, res) {
   const termsPath = path.join(__dirname, "../public/terms.html");
   res.sendFile(termsPath);
 });
+router.get("/collect-address", function (_req, res) {
+  // Use path.join to construct file path
+  const termsPath = path.join(__dirname, "../public/customerAddressForm.html");
+  res.sendFile(termsPath);
+});
 
 module.exports = router;

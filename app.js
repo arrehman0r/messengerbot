@@ -65,12 +65,7 @@ app.post("/webhook", (req, res) => {
       if (webhookEvent.message) {
         handleMessage(senderPsid, webhookEvent.message);
       } else if (webhookEvent.postback) {
-        handlePostback(
-          senderPsid,
-          webhookEvent.postback,
-          PAGE_ACCESS_TOKEN,
-          PAGE_ID
-        );
+        handlePostback(senderPsid, webhookEvent.postback);
       }
     });
 
@@ -132,12 +127,7 @@ function handleMessage(senderPsid, receivedMessage) {
 }
 
 // Handles messaging_postbacks events
-function handlePostback(
-  senderPsid,
-  receivedPostback,
-  PAGE_ACCESS_TOKEN,
-  PAGE_ID
-) {
+function handlePostback(senderPsid, receivedPostback) {
   let response;
 
   // Get the payload for the postback
@@ -145,7 +135,7 @@ function handlePostback(
 
   // Set the response based on the postback payload
   if (payload === "yes") {
-    customerAddress(senderPsid, PAGE_ACCESS_TOKEN, PAGE_ID);
+    customerAddress(senderPsid);
     // response = { text: "Thanks!" };
   } else if (payload === "no") {
     response = { text: "Oops, try sending another image." };
