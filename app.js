@@ -1,12 +1,13 @@
 "use strict";
 require("dotenv").config();
 // Imports dependencies and set up http server
-const { customerAdress } = require("./scripts/customerAddress");
+const { customerAddress } = require("./scripts/customerAddress");
 const request = require("request"),
   express = require("express"),
   { urlencoded, json } = require("body-parser"),
   cors = require("cors");
-
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const PAGE_ID = process.env.PAGE_ID;
 const app = express();
 
 // Parse application/x-www-form-urlencoded
@@ -20,13 +21,6 @@ app.use(cors());
 
 const routes = require("./routes/routes");
 app.use("/", routes);
-// app.get("/privacy-policy", function (_req, res) {
-//   res.sendFile(__dirname + "/public/privacy_policy.html");
-// });
-// app.get("/terms-and-services", function (_req, res) {
-//   res.sendFile(__dirname + "/public/terms.html");
-// });
-// Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
   // Your verify token. Should be a random string.
   const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
@@ -141,7 +135,8 @@ function handlePostback(senderPsid, receivedPostback) {
 
   // Set the response based on the postback payload
   if (payload === "yes") {
-    response = { text: "Thanks!" };
+    customerAddress(senderPsid, PAGE_ACCESS_TOKEN, PAGE_ID);
+    // response = { text: "Thanks!" };
   } else if (payload === "no") {
     response = { text: "Oops, try sending another image." };
   }
