@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path"); // Import the 'path' module
 const router = express.Router();
 
 router.get("/", function (_req, res) {
@@ -19,4 +20,5 @@ router.get("/terms-and-services", function (_req, res) {
   const termsPath = path.join(__dirname, "../public/terms.html");
   res.sendFile(termsPath);
 });
+
 module.exports = router;
