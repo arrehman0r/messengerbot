@@ -1,6 +1,6 @@
 const request = require("request");
 
-// Function to send a custom address collection form
+// Function to send the Structured Information Template
 function customerAddress(senderPsid) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
@@ -12,39 +12,30 @@ function customerAddress(senderPsid) {
       attachment: {
         type: "template",
         payload: {
-          template_type: "generic",
-          elements: [
-            {
-              title: "Please provide your address and phone number",
-              subtitle: "Type your address and phone number below:",
-              buttons: [
-                {
-                  type: "web_url",
-                  url: "https://sore-pear-puppy-tam.cyclic.app/collect-address", // Replace with your own form URL
-                  title: "Open Form",
-                  webview_height_ratio: "full",
-                },
-              ],
-            },
-          ],
+          template_type: "customer_information",
+          countries: ["PK"], // Replace with your desired country code
+          business_privacy: {
+            url: "https://sore-pear-puppy-tam.cyclic.app/privacy-policy", // Replace with your business's privacy policy URL
+          },
+          expires_in_days: 1, // Adjust as needed
         },
       },
     },
   };
 
-  // Send the POST request to initiate the custom form
+  // Send the POST request to initiate the Structured Information Template
   request(
     {
-      uri: "https://graph.facebook.com/v2.6/me/messages",
+      uri: "https://graph.facebook.com/v13.0/me/messages", // Use the desired Facebook Graph API version
       qs: { access_token: PAGE_ACCESS_TOKEN },
       method: "POST",
       json: messageData,
     },
     (err, _res, _body) => {
       if (!err) {
-        console.log("Custom address collection form sent.");
+        console.log("Structured Information Template sent.");
       } else {
-        console.error("Error sending custom form:", err);
+        console.error("Error sending Structured Information Template:", err);
       }
     }
   );
