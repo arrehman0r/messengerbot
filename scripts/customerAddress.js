@@ -17,7 +17,13 @@ function customerAddress(senderPsid) {
           business_privacy: {
             url: "https://sore-pear-puppy-tam.cyclic.app/privacy-policy", // Replace with your business's privacy policy URL
           },
-          expires_in_days: 1, // Adjust as needed
+          expires_in_days: 1,
+          fields: [
+            {
+              name: "shipping_address",
+              type: "address",
+            },
+          ],
         },
       },
     },
