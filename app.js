@@ -126,7 +126,8 @@ function handleMessage(senderPsid, receivedMessage) {
   callSendAPI(senderPsid, response);
 }
 
-// Handles messaging_postbacks events
+// Handles messaging_postbacks eventsrm package-lock.json
+
 function handlePostback(senderPsid, receivedPostback) {
   let response;
 
