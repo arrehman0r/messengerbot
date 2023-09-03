@@ -1,9 +1,7 @@
 const request = require("request");
-
 // Function to send the Structured Information Template
 function customerAddress(senderPsid) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-
   const messageData = {
     recipient: {
       id: senderPsid,
@@ -13,7 +11,7 @@ function customerAddress(senderPsid) {
         type: "template",
         payload: {
           template_type: "customer_information",
-          countries: ["PK"], // Replace with your desired country code
+          countries: ["PK", "US"], // Replace with your desired country code
           business_privacy: {
             url: "https://sore-pear-puppy-tam.cyclic.app/privacy-policy", // Replace with your business's privacy policy URL
           },
@@ -28,7 +26,6 @@ function customerAddress(senderPsid) {
       },
     },
   };
-
   // Send the POST request to initiate the Structured Information Template
   request(
     {
@@ -46,7 +43,6 @@ function customerAddress(senderPsid) {
     }
   );
 }
-
 module.exports = {
   customerAddress,
 };
