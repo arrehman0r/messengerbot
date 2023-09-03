@@ -13,17 +13,11 @@ function customerAddress(senderPsid) {
         type: "template",
         payload: {
           template_type: "customer_information",
-          countries: ["PK"],
+          countries: ["PK"], // Replace with your desired country code
           business_privacy: {
-            url: "https://sore-pear-puppy-tam.cyclic.app/privacy-policy",
+            url: "https://sore-pear-puppy-tam.cyclic.app/privacy-policy", // Replace with your business's privacy policy URL
           },
-          expires_in_days: 1,
-          fields: [
-            {
-              name: "shipping_address",
-              type: "address",
-            },
-          ],
+          expires_in_days: 1, // Adjust as needed
         },
       },
     },
@@ -32,7 +26,7 @@ function customerAddress(senderPsid) {
   // Send the POST request to initiate the Structured Information Template
   request(
     {
-      uri: "https://graph.facebook.com/v13.0/me/messages",
+      uri: "https://graph.facebook.com/v13.0/me/messages", // Use the desired Facebook Graph API version
       qs: { access_token: PAGE_ACCESS_TOKEN },
       method: "POST",
       json: messageData,
