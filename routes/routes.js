@@ -3,7 +3,8 @@ const path = require("path"); // Import the 'path' module
 const router = express.Router();
 
 router.get("/", function (_req, res) {
-  res.send("Hello from bot once again yes!!");
+  const homePagePath = path.join(__dirname, "../public/home.html");
+  res.sendFile(homePagePath);
 });
 
 router.get("/privacy-policy", function (_req, res) {
