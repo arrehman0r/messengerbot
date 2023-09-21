@@ -14,7 +14,7 @@
     "request": "^2.88.2"
   },
   "engines": {
-    "node": ">=10.x"
+    "node": ">=14 <18"
   },
   "repository": "https://github.com/fbsamples/messenger-platform-samples",
   "author": "Facebook",
