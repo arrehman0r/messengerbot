@@ -1,4 +1,4 @@
-export async function customerAddress(senderPsid) {
+async function customerAddress(senderPsid) {
   const request = new XMLHttpRequest();
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
