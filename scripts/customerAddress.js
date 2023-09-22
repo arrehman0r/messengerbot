@@ -38,3 +38,4 @@ async function customerAddress(senderPsid) {
     console.log("Error sending message:", response);
   }
 }
+module.exports = customerAddress;
